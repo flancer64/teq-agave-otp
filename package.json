@@ -20,7 +20,7 @@
     "test:unit": "mocha ./test/unit --recursive"
   },
   "dependencies": {
-    "@teqfw/db": ">=0.23.0 <1.0.0"
+    "@teqfw/db": ">=0.22.1 <1.0.0"
   },
   "devDependencies": {
     "@teqfw/test": ">=0.20.1 <1.0.0",
