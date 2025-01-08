@@ -1,0 +1,60 @@
+{
+  "package": {
+    "fl64": {
+      "package": {
+        "otp": {
+          "entity": {
+            "token": {
+              "comment": "Registry of one-time tokens for various user activities (e.g., email verification, password reset).",
+              "attr": {
+                "id": {"type": "id"},
+                "user_ref": {
+                  "type": "ref",
+                  "comment": "Reference to the GPT user for whom this token is generated."
+                },
+                "code": {
+                  "type": "string",
+                  "comment": "One-time code generated for the specified activity."
+                },
+                "type": {
+                  "type": "string",
+                  "comment": "Type of activity for which the token is generated, defined at the project level."
+                },
+                "date_created": {
+                  "type": "datetime",
+                  "comment": "Date and time when the token was generated.",
+                  "default": "current"
+                },
+                "date_expires": {
+                  "type": "datetime",
+                  "comment": "Timestamp of when the token will expire."
+                }
+              },
+              "index": {
+                "code": {
+                  "type": "unique", "attrs": ["code"]
+                }
+              },
+              "relation": {
+                "user": {
+                  "attrs": ["user_ref"],
+                  "ref": {
+                    "path": "/user",
+                    "attrs": ["id"]
+                  },
+                  "action": {
+                    "delete": "cascade",
+                    "update": "cascade"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "refs": {
+    "/user": ["id"]
+  }
+}

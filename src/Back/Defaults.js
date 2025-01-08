@@ -3,6 +3,8 @@
  */
 export default class Fl64_Otp_Back_Defaults {
 
+    LIFETIME_SEC = 3600; // 1 hour
+
     NAME;
 
     /** @type {Fl64_Otp_Shared_Defaults} */
