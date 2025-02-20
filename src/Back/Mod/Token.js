@@ -28,7 +28,7 @@ export default class Fl64_Otp_Back_Mod_Token {
          * @param {number} params.userId
          * @param {string} params.type
          * @param {number} [params.lifetime] - Token lifetime in seconds.
-         * @returns {Promise<{token: string}>}
+         * @returns {Promise<{token: string, tokenId:number}>}
          * @throws {Error} If required arguments are missing or unique token generation fails.
          */
         this.create = async function ({trx: trxOuter, userId, type, lifetime}) {
@@ -39,7 +39,7 @@ export default class Fl64_Otp_Back_Mod_Token {
             /**
              * Generate a unique token and store it.
              * @param {TeqFw_Db_Back_RDb_ITrans} trx
-             * @returns {Promise<{token: string}>}
+             * @returns {Promise<{token: string, tokenId:number}>}
              * @throws {Error} If a unique token cannot be generated.
              */
             const operation = async (trx) => {
@@ -64,9 +64,10 @@ export default class Fl64_Otp_Back_Mod_Token {
                 dto.user_ref = userId;
 
                 const {primaryKey} = await repoToken.createOne({trx, dto});
-                logger.info(`OTP token generated for user ${userId} (id: ${primaryKey[ATTR.ID]}, type: ${type}, lifetime: ${normLifetime}).`);
+                const tokenId = primaryKey[ATTR.ID];
+                logger.info(`OTP token generated for user ${userId} (id: ${tokenId}, type: ${type}, lifetime: ${normLifetime}).`);
 
-                return {token};
+                return {token, tokenId};
             };
 
             return trxWrapper.execute(trxOuter, operation);
