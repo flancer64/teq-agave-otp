@@ -17,7 +17,7 @@ export default class Fl64_Otp_Back_Store_RDb_Repo_Token {
          * @param {Fl64_Otp_Back_Store_RDb_Schema_Token.Dto} [dto]
          * @returns {Fl64_Otp_Back_Store_RDb_Schema_Token.Dto}
          */
-        this.createDto = schema.createDto;
+        this.createDto = (dto) => schema.createDto(dto);
 
         /**
          * @param {Object} params
