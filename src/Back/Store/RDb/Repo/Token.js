@@ -14,7 +14,7 @@ export default class Fl64_Otp_Back_Store_RDb_Repo_Token {
         }
     ) {
         /**
-         * @param {Fl64_Otp_Back_Store_RDb_Schema_Token.Dto} [dto]
+         * @param {Fl64_Otp_Back_Store_RDb_Schema_Token.Dto|Object} [dto]
          * @returns {Fl64_Otp_Back_Store_RDb_Schema_Token.Dto}
          */
         this.createDto = (dto) => schema.createDto(dto);
@@ -32,7 +32,7 @@ export default class Fl64_Otp_Back_Store_RDb_Repo_Token {
         /**
          * @param {Object} params
          * @param {TeqFw_Db_Back_RDb_ITrans} [params.trx]
-         * @param {Object} params.conditions
+         * @param {Object<string, *>} params.conditions
          * @returns {Promise<{deletedCount: number}>}
          */
         this.deleteMany = async function ({trx, conditions}) {

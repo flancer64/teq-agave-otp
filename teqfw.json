@@ -4,5 +4,11 @@
       "ns": "Fl64_Otp_",
       "path": "./src"
     }
+  },
+  "@teqfw/core": {
+    "plugin": {
+      "onInit": "Fl64_Otp_Back_Plugin_Start",
+      "onStop": "Fl64_Otp_Back_Plugin_Stop"
+    }
   }
 }
