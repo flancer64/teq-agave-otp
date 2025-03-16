@@ -1,10 +1,9 @@
-import {randomUUID} from 'crypto';
-
 /**
  * Model for managing OTP tokens in the backend.
  */
 export default class Fl64_Otp_Back_Mod_Token {
     /**
+     * @param {typeof import('node:crypto')} crypto
      * @param {Fl64_Otp_Back_Defaults} DEF
      * @param {TeqFw_Core_Shared_Api_Logger} logger
      * @param {TeqFw_Db_Back_App_TrxWrapper} trxWrapper
@@ -12,6 +11,7 @@ export default class Fl64_Otp_Back_Mod_Token {
      */
     constructor(
         {
+            'node:crypto': crypto,
             Fl64_Otp_Back_Defaults$: DEF,
             TeqFw_Core_Shared_Api_Logger$$: logger,
             TeqFw_Db_Back_App_TrxWrapper$: trxWrapper,
@@ -19,6 +19,8 @@ export default class Fl64_Otp_Back_Mod_Token {
         }
     ) {
         // VARS
+        const {randomUUID} = crypto;
+
         const ATTR = repoToken.getSchema().getAttributes();
 
         /**
