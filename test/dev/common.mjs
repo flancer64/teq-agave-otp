@@ -11,7 +11,7 @@ let container;
 // MAIN
 /**
  * Create a DI container then set up it to run in manual scenarios.
- * @returns {Promise<TeqFw_Di_Api_Container>}
+ * @returns {Promise<TeqFw_Di_Container>}
  */
 export async function createLocalContainer() {
     // compose path to the project root (plugin or app)
